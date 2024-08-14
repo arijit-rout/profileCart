@@ -108,7 +108,7 @@ const Cart = ({ removeFromCartEvent }) => {
 
       <>
         <div className="w-full md:w-1/3 p-4">
-          <Link to="/">
+          <Link to="/profileCart">
           <button
 
 className=" btn mb-4 relative  inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5 "
