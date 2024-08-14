@@ -13,6 +13,7 @@ const Checkout = () => {
     country: '',
   });
 
+  // Fetch cart data from localStorage on component mount
   useEffect(() => {
     const storedCart = localStorage.getItem('cartData');
     if (storedCart) {
@@ -20,25 +21,30 @@ const Checkout = () => {
     }
   }, []);
 
+  // Calculate the subtotal of all items in the cart
   const calculateSubtotal = () => {
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };
 
+  // Calculate the discount based on the subtotal (10% discount)
   const calculateDiscount = () => {
     return calculateSubtotal() * 0.1;
   };
 
   const shippingCharge = 5.99;
 
+  // Calculate the total cost including discount and shipping
   const calculateTotal = () => {
     return calculateSubtotal() - calculateDiscount() + shippingCharge;
   };
 
+  // Handle changes in the shipping information form fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setShippingInfo({ ...shippingInfo, [name]: value });
   };
 
+  // Handle order confirmation
   const handleConfirmOrder = () => {
     const { name, address, city, postalCode, country } = shippingInfo;
 
@@ -52,7 +58,8 @@ const Checkout = () => {
         draggable: true,
         progress: undefined,
       });
-      
+
+      // Clear cart data from localStorage after order is confirmed
       localStorage.removeItem('cartData');
       setTimeout(() => {
         window.location.href = "/profileCart";
@@ -74,6 +81,7 @@ const Checkout = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Checkout</h1>
 
+      {/* Shipping Information Section */}
       <div className="mb-6">
         <h2 className="text-xl font-bold mb-2">Shipping Information</h2>
         <div className="space-y-4">
@@ -120,6 +128,7 @@ const Checkout = () => {
         </div>
       </div>
 
+      {/* Order Summary Section */}
       <div className="mb-6">
         <h2 className="text-xl font-bold mb-2">Order Summary</h2>
         <div className="flex justify-between mb-2">
@@ -141,21 +150,30 @@ const Checkout = () => {
         </div>
       </div>
 
+      {/* Buttons for Confirm Order and Adding More Items */}
       <div className="flex flex-row md:flex-row items-center md:space-x-4 md:space-y-0">
-        <Link  className="w-full md:w-1/2">
-        <button onClick={handleConfirmOrder} className=" btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5">
-        <span className="mobileHide w-56 h-48 rounded bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-        <span className=" relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white">Confirm Order</span>
-        </button>
+        <Link className="w-full md:w-1/2">
+          <button
+            onClick={handleConfirmOrder}
+            className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5"
+          >
+            <span className="mobileHide w-56 h-48 rounded bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+            <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white">
+              Confirm Order
+            </span>
+          </button>
         </Link>
-        
+
         <Link to="/profileCart" className="w-full md:w-1/2">
-        <button className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5">
-        <span className="mobileHide w-56 h-48 rounded bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-        <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white">Add More Items</span>
-        </button>
+          <button
+            className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5"
+          >
+            <span className="mobileHide w-56 h-48 rounded bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+            <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white">
+              Add More Items
+            </span>
+          </button>
         </Link>
-        
       </div>
 
       <ToastContainer />

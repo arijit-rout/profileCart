@@ -28,8 +28,8 @@ function App() {
     <main >
       <Routes>
         <Route path="/profileCart" element={<Home addToCartEvent ={updateCart} />} />
-        <Route path="/cart" element={<Cart removeFromCartEvent={updateCart}/>} />
-        <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/profileCart/cart" element={<Cart removeFromCartEvent={updateCart}/>} />
+        <Route path="/profileCart/checkout" element={<Checkout/>} />
       </Routes>
     </main>
   </Router>

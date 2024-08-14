@@ -37,8 +37,7 @@ body{
   top: -15px !important;
 }
 
-/* Mobile-first styles are already mostly handled by Tailwind. 
-   Below are some custom styles to enhance mobile responsiveness. */
+
 
    @media (max-width: 767px) {
     .mobileHide{
@@ -49,7 +48,7 @@ body{
   
   
     .mobileHide {
-      display: none; /* Hide the hover background span on mobile */
+      display: none; 
     }
   
     .btn .group-hover\:ml-0,
@@ -57,11 +56,11 @@ body{
     .btn .group-hover\:translate-x-0,
     .btn .group-hover\:translate-y-0,
     .btn .group-hover\:text-white {
-      transition: none; /* Disable hover transitions */
-      margin-left: inherit; /* Remove hover margin adjustments */
-      margin-bottom: inherit; /* Remove hover margin adjustments */
-      transform: none; /* Disable hover transformations */
-      color: inherit; /* Keep the original text color */
+      transition: none; 
+      margin-left: inherit; 
+      margin-bottom: inherit; 
+      transform: none; 
+      color: inherit; 
     }
   }
   
