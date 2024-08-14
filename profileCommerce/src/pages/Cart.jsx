@@ -16,7 +16,6 @@ const Cart = ({ removeFromCartEvent }) => {
   }, []);
 
   const updateQuantity = (index, newQuantity) => {
-    console.log(newQuantity);
 
     if (newQuantity < 1) {
       toast.error('Quantity cannot be less than 1', {

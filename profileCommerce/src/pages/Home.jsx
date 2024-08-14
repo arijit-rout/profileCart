@@ -36,7 +36,6 @@ const Home = ({ addToCartEvent }) => {
     const updatedCart = [...currentCart, product];
     setCart(updatedCart);
     localStorage.setItem('cartData', JSON.stringify(updatedCart));
-    console.log('Cart updated:', updatedCart);
 
     toast.success(`1 item added to cart successfully!`, {
       position: "top-right",
@@ -55,7 +54,6 @@ const Home = ({ addToCartEvent }) => {
 
   return (
     <div className="p-4">
-      {/* <h1 className="text-2xl font-bold mb-4">Product </h1> */}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product) => (

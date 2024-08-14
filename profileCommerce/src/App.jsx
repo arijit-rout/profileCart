@@ -14,13 +14,11 @@ function App() {
   useEffect(() => {
     
     const storedCart = JSON.parse(localStorage.getItem('cartData')) || [];
-    console.log(storedCart);
     
     setCartItem(storedCart);
   }, []);
 
   const updateCart = (updatedCart) => {
-    console.log(updatedCart);
     setCartItem(updatedCart)
     localStorage.setItem('cartData', JSON.stringify(updatedCart));
   };
