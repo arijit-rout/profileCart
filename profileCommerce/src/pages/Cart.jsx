@@ -16,6 +16,8 @@ const Cart = ({ removeFromCartEvent }) => {
   }, []);
 
   const updateQuantity = (index, newQuantity) => {
+    console.log(newQuantity);
+
     if (newQuantity < 1) {
       toast.error('Quantity cannot be less than 1', {
         position: "top-right",
@@ -51,6 +53,15 @@ const Cart = ({ removeFromCartEvent }) => {
     if (removeFromCartEvent) {
       removeFromCartEvent(updatedCart);
     }
+    toast.success('Item removed', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const calculateSubtotal = () => {
@@ -93,50 +104,60 @@ const Cart = ({ removeFromCartEvent }) => {
           </div>
         )}
       </div>
-      
-      
-        <>
-          <div className="w-full md:w-1/3 p-4">
-          <Link to="/">  
-          <button className='w-full mb-4 primaryBtn text-white py-2 px-4 rounded'>
-              Go to product
-            </button>
+
+
+      <>
+        <div className="w-full md:w-1/3 p-4">
+          <Link to="/">
+          <button
+
+className=" btn mb-4 relative  inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5 "
+>
+
+<span className="mobileHide w-56 h-48 rounded text-white bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+<span className=" relative w-full text-center text-white transition-colors duration-300 ease-in-out group-hover:text-white">Add More Items</span>
+</button>
           </Link>
-            
-            {cart.length !== 0 && <div className="border rounded-lg shadow-md bg-gray-50 p-4">
-              <h2 className="text-xl font-bold mb-4">Cart Summary</h2>
-              <div className="flex justify-between mb-2">
-                <span>Cart Total:</span>
-                <span>${calculateSubtotal().toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between mb-2">
-                <span>Discount:</span>
-                <span>-${calculateDiscount().toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between mb-2">
-                <span>Shipping Charge:</span>
-                <span>${shippingCharge.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between mb-2">
-                <span>Total Quantity:</span>
-                <span>{calculateTotalQuantity()}</span>
-              </div>
-              <hr className="my-2" />
-              <div className="flex justify-between font-bold text-lg mb-4">
-                <span>Total:</span>
-                <span>${calculateTotal().toFixed(2)}</span>
-              </div>
+
+          {cart.length !== 0 && <div className="border rounded-lg shadow-md bg-gray-50 p-4">
+            <h2 className="text-xl font-bold mb-4">Cart Summary</h2>
+            <div className="flex justify-between mb-2">
+              <span>Cart Total:</span>
+              <span>${calculateSubtotal().toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between mb-2">
+              <span>Discount:</span>
+              <span>-${calculateDiscount().toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between mb-2">
+              <span>Shipping Charge:</span>
+              <span>${shippingCharge.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between mb-2">
+              <span>Total Quantity:</span>
+              <span>{calculateTotalQuantity()}</span>
+            </div>
+            <hr className="my-2" />
+            <div className="flex justify-between font-bold text-lg mb-4">
+              <span>Total:</span>
+              <span>${calculateTotal().toFixed(2)}</span>
+            </div>
+
+            <Link to="/checkout" >
               <button
-                
-                className="w-full primaryBtn text-white py-2 px-4 rounded"
+
+                className=" btn relative  inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5"
               >
-                <Link to="/checkout">Checkout</Link>
+
+                <span className="mobileHide w-56 h-48 rounded text-white bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+                <span className=" relative w-full text-center text-white transition-colors duration-300 ease-in-out group-hover:text-white">Checkout</span>
               </button>
-            </div>}
-            
-          </div>
-        </>
-      
+            </Link>
+          </div>}
+
+        </div>
+      </>
+
       <ToastContainer />
     </div>
   );

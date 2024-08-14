@@ -141,18 +141,21 @@ const Checkout = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-        <button
-          onClick={handleConfirmOrder}
-          className="w-full md:w-1/2 primaryBtn text-white py-2 px-4 rounded"
-        >
-          Confirm Order
+      <div className="flex flex-row md:flex-row items-center md:space-x-4 md:space-y-0">
+        <Link  className="w-full md:w-1/2">
+        <button onClick={handleConfirmOrder} className=" btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5">
+        <span className="mobileHide w-56 h-48 rounded bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+        <span className=" relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white">Confirm Order</span>
         </button>
-        <Link to="/" className="w-full md:w-1/2">
-          <button className="w-full bg-blue-500 text-white py-2 px-4 rounded">
-            Add More Items
-          </button>
         </Link>
+        
+        <Link to="/" className="w-full md:w-1/2">
+        <button className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all primaryBtn rounded hover:bg-white group py-1.5 px-2.5">
+        <span className="mobileHide w-56 h-48 rounded bg-black absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+        <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white">Add More Items</span>
+        </button>
+        </Link>
+        
       </div>
 
       <ToastContainer />

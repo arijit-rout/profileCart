@@ -18,15 +18,50 @@ body{
 /* PRODUCT CSS */
 
 .primaryBtn {
-  background-color: #0AA97F;; /* Base color */
+  background-color: #0AA97F;
+  color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.dangerBtn{
+  background-color: rgb(220 38 38);
+  color: #ffffff;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .primaryBtn:hover {
-  background-color: #0EC297;
+  background-color: #0AA97F !important ;
   transform: scale(1.05);
 }
 .cartIcon{
   right: -15px !important;
   top: -15px !important;
 }
+
+/* Mobile-first styles are already mostly handled by Tailwind. 
+   Below are some custom styles to enhance mobile responsiveness. */
+
+   @media (max-width: 767px) {
+    .mobileHide{
+      display: none;
+    }
+  }
+  @media (hover: none) {
+  
+  
+    .mobileHide {
+      display: none; /* Hide the hover background span on mobile */
+    }
+  
+    .btn .group-hover\:ml-0,
+    .btn .group-hover\:mb-32,
+    .btn .group-hover\:translate-x-0,
+    .btn .group-hover\:translate-y-0,
+    .btn .group-hover\:text-white {
+      transition: none; /* Disable hover transitions */
+      margin-left: inherit; /* Remove hover margin adjustments */
+      margin-bottom: inherit; /* Remove hover margin adjustments */
+      transform: none; /* Disable hover transformations */
+      color: inherit; /* Keep the original text color */
+    }
+  }
+  
