@@ -27,9 +27,9 @@ function App() {
     <Header cartLength={cartItem.length} />
     <main >
       <Routes>
-        <Route path="profileCart" element={<Home addToCartEvent ={updateCart} />} />
-        <Route path="profileCart/cart" element={<Cart removeFromCartEvent={updateCart}/>} />
-        <Route path="profileCart/checkout" element={<Checkout/>} />
+        <Route path="/profileCart" element={<Home addToCartEvent ={updateCart} />} />
+        <Route path="/profileCart/cart" element={<Cart removeFromCartEvent={updateCart}/>} />
+        <Route path="/profileCart/checkout" element={<Checkout/>} />
       </Routes>
     </main>
   </Router>
